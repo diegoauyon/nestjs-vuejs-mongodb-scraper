@@ -1,0 +1,238 @@
+{
+  "basePath": "/v1",
+  "definitions": {
+    "AllBoatsResponseDTO": {
+      "properties": {},
+      "type": "object"
+    },
+    "Boat": {
+      "properties": {
+        "_id": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/ObjectID"
+            },
+            {
+              "description": "Boat Object ID"
+            }
+          ]
+        },
+        "beam": {
+          "description": "Beam",
+          "type": "string"
+        },
+        "boatModel": {
+          "description": "Boat Model",
+          "type": "string"
+        },
+        "designer": {
+          "description": "Designer",
+          "type": "string"
+        },
+        "displacement": {
+          "description": "Displacement",
+          "type": "string"
+        },
+        "draft": {
+          "description": "Draft",
+          "type": "string"
+        },
+        "hullType": {
+          "description": "Hull Type",
+          "type": "string"
+        },
+        "images": {
+          "description": "Boat Images",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "loa": {
+          "description": "LOA",
+          "type": "string"
+        },
+        "lwl": {
+          "description": "LWL",
+          "type": "string"
+        },
+        "riggingType": {
+          "description": "Rigging Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "_id",
+        "boatModel",
+        "designer",
+        "hullType",
+        "riggingType",
+        "displacement",
+        "loa",
+        "lwl",
+        "beam",
+        "draft",
+        "images"
+      ],
+      "type": "object"
+    },
+    "BoatForCreationDTO": {
+      "properties": {},
+      "type": "object"
+    },
+    "BoatForUpdateDTO": {
+      "properties": {},
+      "type": "object"
+    },
+    "ObjectID": {
+      "properties": {},
+      "type": "object"
+    },
+    "SingleBoatResponseDTO": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  "info": {
+    "contact": {},
+    "description": "API for Boats",
+    "title": "Boat information Service",
+    "version": "1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_root",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/boats": {
+      "get": {
+        "description": "Fetch all boats",
+        "operationId": "Fetch all boats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "pageNumber",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch all boats",
+            "schema": {
+              "$ref": "#/definitions/AllBoatsResponseDTO"
+            }
+          }
+        },
+        "summary": "Fetch all boats",
+        "tags": [
+          "Boat"
+        ]
+      },
+      "post": {
+        "description": "Submit a boat",
+        "operationId": "Submit a boat",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Submit a boat",
+            "schema": {
+              "$ref": "#/definitions/BoatForCreationDTO"
+            }
+          }
+        },
+        "summary": "Submit a boat",
+        "tags": [
+          "Boat"
+        ]
+      },
+      "put": {
+        "description": "Edit a particular boat using ID",
+        "operationId": "Edit a particular boat using ID",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Edit a particular boat using ID",
+            "schema": {
+              "$ref": "#/definitions/BoatForUpdateDTO"
+            }
+          }
+        },
+        "summary": "Edit a particular boat using ID",
+        "tags": [
+          "Boat"
+        ]
+      }
+    },
+    "/boats/{boatID}": {
+      "delete": {
+        "description": "Delete a boat using ID",
+        "operationId": "Delete a boat using ID",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete a boat using ID",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Boat"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Delete a boat using ID",
+        "tags": [
+          "Boat"
+        ]
+      },
+      "get": {
+        "description": "Fetch a particular boat using ID",
+        "operationId": "Fetch a particular boat using ID",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch a particular boat using ID",
+            "schema": {
+              "$ref": "#/definitions/SingleBoatResponseDTO"
+            }
+          }
+        },
+        "summary": "Fetch a particular boat using ID",
+        "tags": [
+          "Boat"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "tags": [],
+  "x-components": {}
+}
